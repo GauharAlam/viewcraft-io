@@ -16,18 +16,18 @@ export default function Dashboard() {
     <div className="min-h-screen flex w-full">
       <Sidebar />
       
-      <div className="flex-1 ml-64">
+      <div className="flex-1 lg:ml-64">
         <Header />
         
-        <main className="p-8">
+        <main className="p-4 md:p-8">
           {/* Page Header */}
-          <div className="mb-8">
-            <h1 className="text-[32px] font-bold mb-2">Dashboard Overview</h1>
+          <div className="mb-6 md:mb-8">
+            <h1 className="text-2xl md:text-[32px] font-bold mb-2">Dashboard Overview</h1>
             <p className="text-muted-foreground">Welcome back! Here's what's happening with your social media.</p>
           </div>
 
           {/* Filters */}
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-6 md:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <PlatformSelect selected={selectedPlatform} onSelect={setSelectedPlatform} />
             
             <Button variant="outline" className="gap-2">
@@ -37,7 +37,7 @@ export default function Dashboard() {
           </div>
 
           {/* Metrics Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
             <MetricCard
               title="Total Followers"
               value="24,583"
@@ -69,7 +69,7 @@ export default function Dashboard() {
           </div>
 
           {/* Charts Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
             <FollowerGrowthChart />
             <EngagementChart />
           </div>

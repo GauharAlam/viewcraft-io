@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Settings, BarChart3, FileText, Users } from "lucide-react";
+import { LayoutDashboard, Settings, BarChart3, FileText, Users, Lightbulb, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
+  { icon: Lightbulb, label: "AI Insights", path: "/insights" },
+  { icon: Calendar, label: "Calendar", path: "/calendar" },
   { icon: BarChart3, label: "Analytics", path: "/analytics" },
   { icon: Users, label: "Competitors", path: "/competitors" },
   { icon: FileText, label: "Reports", path: "/reports" },
@@ -12,10 +14,10 @@ const navItems = [
 
 export function Sidebar() {
   return (
-    <aside className="w-64 h-screen bg-sidebar border-r border-sidebar-border flex flex-col fixed left-0 top-0">
+    <aside className="w-64 h-screen bg-sidebar border-r border-sidebar-border flex-col fixed left-0 top-0 hidden lg:flex">
       <div className="p-6 border-b border-sidebar-border">
-        <h1 className="text-2xl font-bold text-sidebar-primary">SocialMetrics</h1>
-        <p className="text-sm text-muted-foreground mt-1">Analytics Platform</p>
+        <h1 className="text-xl md:text-2xl font-bold text-sidebar-primary">SocialMetrics</h1>
+        <p className="text-xs md:text-sm text-muted-foreground mt-1">Analytics Platform</p>
       </div>
       
       <nav className="flex-1 p-4 space-y-1">
