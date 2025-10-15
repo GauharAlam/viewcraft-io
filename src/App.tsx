@@ -10,9 +10,12 @@ import Insights from "./pages/Insights";
 import ContentCalendar from "./pages/ContentCalendar";
 import Analytics from "./pages/Analytics";
 import Competitors from "./pages/Competitors";
+import Inbox from "./pages/Inbox";
+import Goals from "./pages/Goals";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import { CommandPalette } from "./components/command/CommandPalette";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +24,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CommandPalette />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
@@ -31,6 +35,8 @@ const App = () => (
           <Route path="/calendar" element={<ContentCalendar />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/competitors" element={<Competitors />} />
+          <Route path="/inbox" element={<Inbox />} />
+          <Route path="/goals" element={<Goals />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />

@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BrandingSettings } from "@/components/settings/BrandingSettings";
 import { TeamManagement } from "@/components/settings/TeamManagement";
+import { WebhookSettings } from "@/components/settings/WebhookSettings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Settings() {
@@ -11,7 +12,7 @@ export default function Settings() {
     <div className="min-h-screen flex w-full">
       <Sidebar />
       
-      <div className="flex-1 ml-64">
+      <div className="flex-1 lg:ml-64">
         <Header />
         
         <main className="p-4 md:p-8">
@@ -21,10 +22,11 @@ export default function Settings() {
           </p>
           
           <Tabs defaultValue="connections" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-6">
+            <TabsList className="grid w-full grid-cols-4 mb-6">
               <TabsTrigger value="connections">Connections</TabsTrigger>
               <TabsTrigger value="branding">Branding</TabsTrigger>
               <TabsTrigger value="team">Team</TabsTrigger>
+              <TabsTrigger value="webhooks">Webhooks</TabsTrigger>
             </TabsList>
 
             <TabsContent value="connections" className="space-y-6">
@@ -54,6 +56,10 @@ export default function Settings() {
 
             <TabsContent value="team">
               <TeamManagement />
+            </TabsContent>
+
+            <TabsContent value="webhooks">
+              <WebhookSettings />
             </TabsContent>
           </Tabs>
         </main>

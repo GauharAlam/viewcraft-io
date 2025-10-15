@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Settings, BarChart3, FileText, Users, Lightbulb, Calendar } from "lucide-react";
+import { LayoutDashboard, Settings, BarChart3, FileText, Users, Lightbulb, Calendar, Inbox, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -8,6 +8,8 @@ const navItems = [
   { icon: Calendar, label: "Calendar", path: "/calendar" },
   { icon: BarChart3, label: "Analytics", path: "/analytics" },
   { icon: Users, label: "Competitors", path: "/competitors" },
+  { icon: Inbox, label: "Inbox", path: "/inbox" },
+  { icon: Target, label: "Goals", path: "/goals" },
   { icon: FileText, label: "Reports", path: "/reports" },
   { icon: Settings, label: "Settings", path: "/settings" },
 ];
