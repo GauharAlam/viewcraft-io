@@ -6,6 +6,7 @@ const platforms = [
   { id: "twitter", name: "X (Twitter)" },
   { id: "instagram", name: "Instagram" },
   { id: "linkedin", name: "LinkedIn" },
+  { id: "reddit", name: "Reddit" }, // Add this line
 ];
 
 interface PlatformSelectProps {
@@ -15,7 +16,7 @@ interface PlatformSelectProps {
 
 export function PlatformSelect({ selected, onSelect }: PlatformSelectProps) {
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2"> {/* Added flex-wrap for better mobile view */}
       {platforms.map((platform) => (
         <Button
           key={platform.id}

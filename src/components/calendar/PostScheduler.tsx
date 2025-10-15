@@ -25,7 +25,7 @@ const mockPosts: ScheduledPost[] = [
     id: "1",
     platform: "twitter",
     content: "Excited to announce our new feature! 🚀",
-    scheduledDate: new Date(2025, 0, 15),
+    scheduledDate: new Date(2025, 9, 17), // October 17
     scheduledTime: "14:00",
     hashtags: ["#ProductLaunch", "#SocialMedia"],
     status: "scheduled",
@@ -34,7 +34,7 @@ const mockPosts: ScheduledPost[] = [
     id: "2",
     platform: "instagram",
     content: "Behind the scenes of our team meeting 📸",
-    scheduledDate: new Date(2025, 0, 16),
+    scheduledDate: new Date(2025, 9, 21), // October 21
     scheduledTime: "10:00",
     hashtags: ["#TeamWork", "#BehindTheScenes"],
     status: "scheduled",
@@ -119,7 +119,6 @@ export function PostScheduler() {
                   />
                 </div>
 
-                {/* AI Hashtag Suggestions */}
                 {newPost.content.length > 10 && (
                   <div className="space-y-2">
                     <Label className="flex items-center gap-2">
@@ -174,7 +173,7 @@ export function PostScheduler() {
           mode="single"
           selected={selectedDate}
           onSelect={setSelectedDate}
-          className="rounded-md border"
+          className="rounded-md border-0 p-0" // <-- This is the important change
         />
 
         <div className="mt-4 p-3 bg-muted/50 rounded-lg text-sm">
@@ -192,8 +191,8 @@ export function PostScheduler() {
         </h3>
 
         {postsForSelectedDate.length === 0 ? (
-          <div className="text-center py-12 text-muted-foreground">
-            <Clock className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <div className="flex flex-col items-center justify-center h-full text-muted-foreground py-12">
+            <Clock className="w-12 h-12 mb-3 opacity-50" />
             <p>No posts scheduled for this date</p>
             <Button variant="outline" className="mt-4" onClick={() => setIsDialogOpen(true)}>
               Schedule a Post

@@ -1,5 +1,3 @@
-import { Header } from "@/components/layout/Header";
-import { Sidebar } from "@/components/layout/Sidebar";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BrandingSettings } from "@/components/settings/BrandingSettings";
@@ -9,61 +7,58 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Settings() {
   return (
-    <div className="min-h-screen flex w-full">
-      <Sidebar />
-      
-      <div className="flex-1 lg:ml-64">
-        <Header />
+    <main className="p-4 pt-20 md:p-8 md:pt-24">
+      {/* Centering container with a max-width */}
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-2xl md:text-[32px] font-bold mb-2">Settings</h1>
+        <p className="text-muted-foreground mb-6 md:mb-8">
+          Manage your account and integrations
+        </p>
         
-        <main className="p-4 md:p-8">
-          <h1 className="text-2xl md:text-[32px] font-bold mb-2">Settings</h1>
-          <p className="text-muted-foreground mb-6 md:mb-8">
-            Manage your account and integrations
-          </p>
-          
-          <Tabs defaultValue="connections" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-6">
-              <TabsTrigger value="connections">Connections</TabsTrigger>
-              <TabsTrigger value="branding">Branding</TabsTrigger>
-              <TabsTrigger value="team">Team</TabsTrigger>
-              <TabsTrigger value="webhooks">Webhooks</TabsTrigger>
-            </TabsList>
+        <Tabs defaultValue="connections" className="w-full">
+          <TabsList className="flex justify-center mb-8">
+            <TabsTrigger value="connections">Connections</TabsTrigger>
+            <TabsTrigger value="branding">Branding</TabsTrigger>
+            <TabsTrigger value="team">Team</TabsTrigger>
+            <TabsTrigger value="webhooks">Webhooks</TabsTrigger>
+          </TabsList>
 
-            <TabsContent value="connections" className="space-y-6">
-              <Card className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Connected Accounts</h3>
-                
-                <div className="space-y-4">
-                  {["X (Twitter)", "Instagram", "LinkedIn"].map((platform) => (
-                    <div
-                      key={platform}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-muted/50 rounded-lg"
-                    >
-                      <div>
-                        <p className="font-medium">{platform}</p>
-                        <p className="text-sm text-muted-foreground">Not connected</p>
-                      </div>
-                      <Button variant="outline">Connect</Button>
+          <TabsContent value="connections" className="space-y-6">
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Connected Accounts</h3>
+              
+              <div className="space-y-4">
+                {["X (Twitter)", "Instagram", "LinkedIn", "Reddit"].map((platform) => (
+                  <div
+                    key={platform}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-muted/50 rounded-lg"
+                  >
+                    <div>
+                      <p className="font-medium">{platform}</p>
+                      <p className="text-sm text-muted-foreground">Not connected</p>
                     </div>
-                  ))}
-                </div>
-              </Card>
-            </TabsContent>
+                    <Button asChild variant="outline">
+                      <a href={`/api/auth/connect/${platform.toLowerCase().split(' ')[0]}`}>Connect</a>
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </TabsContent>
 
-            <TabsContent value="branding">
-              <BrandingSettings />
-            </TabsContent>
+          <TabsContent value="branding">
+            <BrandingSettings />
+          </TabsContent>
 
-            <TabsContent value="team">
-              <TeamManagement />
-            </TabsContent>
+          <TabsContent value="team">
+            <TeamManagement />
+          </TabsContent>
 
-            <TabsContent value="webhooks">
-              <WebhookSettings />
-            </TabsContent>
-          </Tabs>
-        </main>
+          <TabsContent value="webhooks">
+            <WebhookSettings />
+          </TabsContent>
+        </Tabs>
       </div>
-    </div>
+    </main>
   );
 }

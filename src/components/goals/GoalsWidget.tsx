@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Target } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Goal {
   id: string;
@@ -43,28 +44,30 @@ export function GoalsWidget() {
   return (
     <Card className="p-6">
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <Target className="w-5 h-5 text-primary" />
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+            <Target className="w-5 h-5 text-primary" />
+          </div>
           <h3 className="text-lg font-semibold">Your Goals</h3>
         </div>
         <Button variant="outline" size="sm">Manage Goals</Button>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         {mockGoals.map((goal) => {
           const progress = (goal.current / goal.target) * 100;
           
           return (
-            <div key={goal.id} className="space-y-2">
+            <div key={goal.id} className="space-y-3">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="font-medium">{goal.title}</p>
+                  <p className="font-semibold text-base">{goal.title}</p>
                   <p className="text-sm text-muted-foreground">
                     {goal.platform} · Due {goal.deadline}
                   </p>
                 </div>
-                <div className="text-right">
-                  <p className="font-semibold text-primary">{progress.toFixed(1)}%</p>
+                <div className="text-right flex-shrink-0 pl-4">
+                  <p className="font-bold text-2xl text-primary">{progress.toFixed(1)}%</p>
                   <p className="text-xs text-muted-foreground">
                     {goal.current.toLocaleString()} / {goal.target.toLocaleString()}
                   </p>

@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Sparkles } from "lucide-react"; // Import a new icon
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const hours = ["12AM", "4AM", "8AM", "12PM", "4PM", "8PM"];
@@ -30,9 +31,9 @@ const getOpacity = (value: number) => {
 
 export function OptimalPostingTimes() {
   const bestTimes = [
-    { day: "Tuesday", time: "2:00 PM", engagement: "95%" },
-    { day: "Friday", time: "12:00 PM", engagement: "92%" },
-    { day: "Friday", time: "4:00 PM", engagement: "88%" },
+    { day: "Tuesdays", time: "at 2:00 PM", engagement: 95 },
+    { day: "Fridays", time: "at 12:00 PM", engagement: 92 },
+    { day: "Fridays", time: "at 4:00 PM", engagement: 88 },
   ];
 
   return (
@@ -44,20 +45,25 @@ export function OptimalPostingTimes() {
         </p>
       </div>
 
-      {/* Best Times Summary */}
-      <div className="mb-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
-        <h4 className="font-medium mb-3 text-sm">🎯 Your Best Times to Post</h4>
-        <div className="space-y-2">
+      {/* --- CORRECTED BEST TIMES SUMMARY --- */}
+      <div className="mb-8 p-4 bg-muted/50 rounded-lg">
+        <h4 className="font-medium mb-4 text-sm flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-primary" /> 
+            Your Best Times to Post
+        </h4>
+        <div className="space-y-3">
           {bestTimes.map((time, idx) => (
             <div key={idx} className="flex items-center justify-between text-sm">
-              <span className="font-medium">
-                {time.day}s at {time.time}
+              <span className="font-medium text-foreground">
+                {time.day} {time.time}
               </span>
-              <span className="text-success">{time.engagement} engagement</span>
+              <span className="font-semibold text-success">{time.engagement}% engagement</span>
             </div>
           ))}
         </div>
       </div>
+      {/* --- END OF CORRECTION --- */}
+
 
       {/* Heatmap */}
       <div className="overflow-x-auto">
