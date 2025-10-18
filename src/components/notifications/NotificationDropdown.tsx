@@ -1,3 +1,5 @@
+// src/components/notifications/NotificationDropdown.tsx
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -78,12 +80,16 @@ export function NotificationDropdown() {
         
         <div className="max-h-96 overflow-y-auto">
           {notifications.map((notification) => (
-            <DropdownMenuItem key={notification.id} className="flex items-start gap-3 p-3 cursor-pointer">
+            <DropdownMenuItem key={notification.id} className="group flex items-start gap-3 p-3 cursor-pointer">
               <div className="mt-1">{getIcon(notification.type)}</div>
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-medium">{notification.title}</p>
-                <p className="text-xs text-muted-foreground">{notification.message}</p>
-                <p className="text-xs text-muted-foreground">{notification.timestamp}</p>
+                <p className="text-xs text-muted-foreground group-data-[highlighted]:text-accent-foreground">
+                  {notification.message}
+                </p>
+                <p className="text-xs text-muted-foreground group-data-[highlighted]:text-accent-foreground">
+                  {notification.timestamp}
+                </p>
               </div>
               {!notification.read && (
                 <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>

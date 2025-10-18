@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// src/components/command/CommandPalette.tsx
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   CommandDialog,
@@ -19,22 +20,23 @@ import {
   Inbox,
   Target
 } from "lucide-react";
+import { useCommand } from "@/context/CommandContext"; // Import the new hook
 
 export function CommandPalette() {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen } = useCommand(); // Use state from context
   const navigate = useNavigate();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen(!open);
       }
     };
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [open, setOpen]); // Add dependencies
 
   const navigationItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
