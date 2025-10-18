@@ -67,7 +67,7 @@ export function CommandPalette() {
               onSelect={() => handleSelect(item.path)}
               className="flex items-center gap-2"
             >
-              <item.icon className="w-4 h-4" />
+              <item.icon className="w-3 h-3" />
               <span>{item.label}</span>
             </CommandItem>
           ))}

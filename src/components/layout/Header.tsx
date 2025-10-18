@@ -1,7 +1,6 @@
-// src/components/layout/Header.tsx
 import { Search, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input"; // Make sure Input is imported
 import { NotificationDropdown } from "@/components/notifications/NotificationDropdown";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { useAuth } from "@/context/AuthContext";
@@ -31,21 +30,17 @@ export function Header() {
       <div className="flex items-center gap-4 flex-1 max-w-xl">
         <SidebarTrigger className="lg:hidden" />
         
-        {/* --- CORRECTED SEARCH BAR --- */}
+        {/* --- FIXED SEARCH BAR --- */}
         <div className="relative w-full max-w-sm items-center hidden sm:flex">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-1 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground" />
           <Input
             readOnly
             onClick={() => setOpen(true)}
-            placeholder="Search..."
-            className="w-full rounded-lg bg-background pl-10 pr-16 py-2 h-9 text-sm border-input cursor-pointer hover:bg-accent/50 transition-colors focus-visible:ring-1 focus-visible:ring-ring"
+            placeholder="Search... (Cmd/Ctrl + K)"
+            className="w-full rounded-lg bg-background pl-10 h-9 text-sm border-input cursor-pointer hover:bg-accent/50 transition-colors focus-visible:ring-1 focus-visible:ring-ring"
           />
-          <div className="absolute right-2.5 top-1/2 -translate-y-1/2">
-            <kbd className="pointer-events-none hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100 md:inline-flex">
-              <span className="text-sm">⌘</span>K
-            </kbd>
-          </div>
         </div>
+
       </div>
       
       <div className="flex items-center gap-2 md:gap-3">

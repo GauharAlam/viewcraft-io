@@ -4,12 +4,19 @@ import { FollowerGrowthChart } from "@/components/dashboard/FollowerGrowthChart"
 import { EngagementChart } from "@/components/dashboard/EngagementChart";
 import { PlatformSelect } from "@/components/dashboard/PlatformSelect";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"; // Import Dropdown components
 import { Calendar } from "lucide-react";
 import { RedditProfileCard } from "@/components/dashboard/RedditProfileCard";
 import { RedditPostTable } from "@/components/dashboard/RedditPostTable";
 
 export default function Dashboard() {
   const [selectedPlatform, setSelectedPlatform] = useState("all");
+  const [dateRange, setDateRange] = useState("Last 30 Days"); // State for the date range
 
   return (
     // The main content starts here. The pt-20/24 accounts for the sticky header.
@@ -23,10 +30,24 @@ export default function Dashboard() {
       {/* Filters */}
       <div className="mb-6 md:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <PlatformSelect selected={selectedPlatform} onSelect={setSelectedPlatform} />
-        <Button variant="outline" className="gap-2">
-          <Calendar className="w-4 h-4" />
-          Last 30 Days
-        </Button>
+
+        {/* --- CONVERTED BUTTON TO DROPDOWN --- */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="gap-2">
+              <Calendar className="w-4 h-4" />
+              {dateRange}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => setDateRange("Last 7 Days")}>Last 7 Days</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setDateRange("Last 15 Days")}>Last 15 Days</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setDateRange("Last 30 Days")}>Last 30 Days</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setDateRange("Last 90 Days")}>Last 90 Days</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        {/* --- END OF CHANGE --- */}
+
       </div>
 
       {/* Conditional Rendering Logic */}
